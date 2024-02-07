@@ -21,7 +21,7 @@ public class CustomerModel {
 
     public CustomerModel(CustomerDTO dto){
         this.name = dto.getName();
-        this.cpf = dto.getName();
+        this.cpf = dto.getCpf();
     }
     
     @Id
