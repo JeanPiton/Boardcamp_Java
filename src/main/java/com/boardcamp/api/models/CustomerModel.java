@@ -23,6 +23,11 @@ public class CustomerModel {
         this.name = dto.getName();
         this.cpf = dto.getCpf();
     }
+
+    public CustomerModel(String name, String cpf){
+        this.name = name;
+        this.cpf = cpf;
+    }
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
