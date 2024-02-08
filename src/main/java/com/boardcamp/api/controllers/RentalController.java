@@ -1,8 +1,11 @@
 package com.boardcamp.api.controllers;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +16,7 @@ import com.boardcamp.api.models.RentalModel;
 import com.boardcamp.api.services.RentalService;
 
 import jakarta.validation.Valid;
+
 
 
 @CrossOrigin(origins = "*")
@@ -30,6 +34,12 @@ public class RentalController {
     public ResponseEntity<RentalModel> createRental(@RequestBody @Valid RentalDTO body) {
         RentalModel rental = rentalService.create(body);
         return ResponseEntity.status(HttpStatus.CREATED).body(rental);
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<RentalModel>> getRentals() {
+        List<RentalModel> rentals = rentalService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(rentals);
     }
     
 }
