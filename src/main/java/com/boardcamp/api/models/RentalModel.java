@@ -35,6 +35,17 @@ public class RentalModel {
         this.delayFee = 0;
     }
 
+    public RentalModel(RentalModel rental, int delayFee){
+        this.game = rental.getGame();
+        this.customer = rental.getCustomer();
+        this.rentDate = rental.getRentDate();
+        this.daysRented = rental.getDaysRented();
+        this.originalPrice = rental.getOriginalPrice();
+
+        this.returnDate = LocalDate.now(ZoneId.of("GMT-03:00"));
+        this.delayFee = delayFee;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
